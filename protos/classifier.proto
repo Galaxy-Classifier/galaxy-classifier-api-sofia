@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+// The classifier service definition.
+service Classifier {
+  // Sends a classification
+  rpc GetClassification (ClassificationRequest) returns (ClassificationReply) {}
+}
+
+// The request message containing the image.
+message ClassificationRequest {
+  string id = 1;
+  bytes image = 2;
+}
+
+// The response message containing the classification label
+message ClassificationReply {
+  string message = 1;
+}
+
+
