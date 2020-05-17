@@ -9,6 +9,7 @@ import base64
 from PIL import Image
 
 
+
 class Clasification(classifier_pb2_grpc.ClassifierServicer):
 
     def GetClassification(self, request, context):
