@@ -23,7 +23,7 @@ message Image {
 
 message ClassificatioMessage {
   string id = 1;
-  string result = 3; 
+  string result = 2; 
 }
 
 

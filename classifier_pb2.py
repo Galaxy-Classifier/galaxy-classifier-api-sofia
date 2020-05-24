@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=b'\n\x10\x63lassifier.proto\">\n\x15\x43lassificationRequest\x12%\n\x15\x63lassificationRequest\x18\x01 \x03(\x0b\x32\x06.Image\"L\n\x13\x43lassificationReply\x12\x35\n\x16\x63lassificationResponse\x18\x01 \x03(\x0b\x32\x15.ClassificatioMessage\"\'\n\x05Image\x12\n\n\x02id\x18\x01 \x01(\t\x12\x12\n\nchunk_data\x18\x02 \x01(\x0c\"2\n\x14\x43lassificatioMessage\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0e\n\x06result\x18\x03 \x01(\t2Q\n\nClassifier\x12\x43\n\x11GetClassification\x12\x16.ClassificationRequest\x1a\x14.ClassificationReply\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x10\x63lassifier.proto\">\n\x15\x43lassificationRequest\x12%\n\x15\x63lassificationRequest\x18\x01 \x03(\x0b\x32\x06.Image\"L\n\x13\x43lassificationReply\x12\x35\n\x16\x63lassificationResponse\x18\x01 \x03(\x0b\x32\x15.ClassificatioMessage\"\'\n\x05Image\x12\n\n\x02id\x18\x01 \x01(\t\x12\x12\n\nchunk_data\x18\x02 \x01(\x0c\"2\n\x14\x43lassificatioMessage\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0e\n\x06result\x18\x02 \x01(\t2Q\n\nClassifier\x12\x43\n\x11GetClassification\x12\x16.ClassificationRequest\x1a\x14.ClassificationReply\"\x00\x62\x06proto3'
 )
 
 
@@ -140,7 +140,7 @@ _CLASSIFICATIOMESSAGE = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='result', full_name='ClassificatioMessage.result', index=1,
-      number=3, type=9, cpp_type=9, label=1,
+      number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
