@@ -8,13 +8,22 @@ service Classifier {
 
 // The request message containing the image.
 message ClassificationRequest {
-  string id = 1;
-  bytes image = 2;
+   repeated Image classificationRequest = 1;
 }
 
 // The response message containing the classification label
 message ClassificationReply {
-  string message = 1;
+  repeated ClassificatioMessage classificationResponse = 1;
+}
+
+message Image {
+  string id = 1;
+  bytes chunk_data = 2;
+}
+
+message ClassificatioMessage {
+  string id = 1;
+  string result = 2; 
 }
 
 

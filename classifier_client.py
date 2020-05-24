@@ -21,8 +21,8 @@ def run():
     with grpc.insecure_channel('localhost:50051') as channel:
         stub = classifier_pb2_grpc.ClassifierStub(channel)
         img_bytes = readimage("/Users/victormorfin/Desktop/tecCuliacan/Residencias/galaxy-classifier-nn/data/Elliptical/ESO486-21.jpg") 
-        response = stub.GetClassification(classifier_pb2.ClassificationRequest(id="1234"  ,image=img_bytes))
-    print("Classifier client received: " + response.message)
+        response = stub.GetClassification(classifier_pb2.ClassificationRequest(classificationRequest = [{"id": "1234", "chunk_data": img_bytes},{"id": "1234", "chunk_data": img_bytes}]))
+    print(response)
 
 
 if __name__ == '__main__':

@@ -13,11 +13,13 @@ from PIL import Image
 class Clasification(classifier_pb2_grpc.ClassifierServicer):
 
     def GetClassification(self, request, context):
-        print(request.image)
-        print(request.id)
-        image = base64.b64decode(request.image)
-        result = classifier.Classifier().makeClassification(image)
-        return classifier_pb2.ClassificationReply(message='{"message":"%s"}' % result)
+        results = list()
+        for obj in request.classificationRequest:
+            image_decoded= base64.b64decode(obj.chunk_data)
+            result = classifier.Classifier().makePrediction(image_decoded)
+            results.append({"id": obj.id,"result": result})
+        
+        return classifier_pb2.ClassificationReply(classificationResponse=results)
 
 
 def serve():
