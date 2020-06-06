@@ -7,14 +7,10 @@ import matplotlib.pyplot as plt
 
 
 class Classifier():  
-  def makePrediction(self,imageFile):
+  def makePrediction(self,image_file,cnn_model, autoencoder_models):
     #Declaracion de variables
     #Size of width & height 
     size =100
-    #Ruta de los modelos de los autoencoders
-    autoencoders_models_paths = glob.glob("./autoencoders/*")
-    #Ruta del modelo de la cnn
-    cnn_model_path = "./cnn/galaxiasCNN.h5"
     #Etiquetas de las clases 
     label_classes = ['elliptical','espiral','lenticular']
     #variables para regresar el ganador
@@ -22,7 +18,7 @@ class Classifier():
     winner_value = 0
     #Recibe una image y la convierte en arreglo de np
     data = []
-    npimg = np.fromstring(imageFile, dtype=np.uint8); 
+    npimg = np.fromstring(image_file, dtype=np.uint8); 
     image = cv2.imdecode(npimg,1)
     gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     im_resized = cv2.resize(gray_image, (size, size), interpolation=cv2.INTER_LINEAR)
@@ -32,18 +28,14 @@ class Classifier():
     img = image_array.reshape(1, size, size, 1).astype('float32')
     img /= 255
 
-    #Cargamos el modelo de la cnn
-    cnn_model = load_model(cnn_model_path)
 
     #Definimos los labels 
     lbl= LabelBinarizer()
     labels = lbl.fit_transform(label_classes)
     #Recorremos todos los autoencoders y realizamos predicciones
-    for model_path in autoencoders_models_paths:
-      #Cargar modelo del autoencoder
-      autoencoder_model = load_model(model_path)
+    for model in autoencoder_models:
       #Pasamos la imagen por el autoencoder
-      autoencoder_result= autoencoder_model.predict(img)
+      autoencoder_result= model.predict(img)
       #Pasamos la imagen obtenida por el autoencoder por el modelo de la cnn
       cnn_result = cnn_model.predict(autoencoder_result)
       #Obtener etiqueta de la prediccion
