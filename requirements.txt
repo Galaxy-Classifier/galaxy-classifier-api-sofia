@@ -1,6 +1,6 @@
 tensorflow==2.2.0
 scikit-learn==0.20.4
-numpy==1.16.6
+numpy==1.22.0
 opencv-python==4.2.0.32
 grpcio==1.29.0
 grpcio-tools==1.29.0
